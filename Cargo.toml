@@ -1,0 +1,30 @@
+[package]
+name = "drcov"
+version = "0.1.0"
+edition = "2021"
+authors = ["redthing1 <redthing1@alt.icu>"]
+description = "a rust library for parsing and writing DrCov coverage files."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/redthing1/drcov-rs"
+keywords = ["drcov", "coverage", "dynamorio", "security", "analysis"]
+categories = ["development-tools", "parsing"]
+
+[lib]
+name = "drcov"
+path = "src/lib.rs"
+
+[[bin]]
+name = "drcov-read"
+path = "src/bin/drcov-read.rs"
+required-features = ["cli"]
+
+[dependencies]
+# Optional CLI dependencies
+clap = { version = "4.0", features = ["derive"], optional = true }
+
+[features]
+default = []
+cli = ["dep:clap"]
+
+[dev-dependencies]
+tempfile = "3.0"
